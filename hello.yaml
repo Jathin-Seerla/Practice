@@ -1,7 +1,7 @@
-- name: hello world
+- name: Hello World
   hosts: local
   connection: local
-  tasks: 
-    - name: print hello world
-      ansible.buildin.debug:
+  tasks:
+    - name: Print hello world
+      ansible.builtin.debug:
         msg: "hello world"
