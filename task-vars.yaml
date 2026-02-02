@@ -8,7 +8,7 @@
   tasks:
   - name: print course informatiom
     vars:
-      COURSE: Ansible
+      COURSE: Ansible #task level variables @inheritance
     ansible.builtin.debug:
     # vars reference should be surrounded by {{}}
       msg: "Hello {{ COURSE }}, Course Duration: {{ DURATION }}, Trainer is {{ TRAINER }}"
