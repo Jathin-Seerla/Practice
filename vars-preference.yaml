@@ -15,3 +15,9 @@
       GREETING: "Hello from Task"
     ansible.builtin.debug:
       msg: "{{ GREETING }}"
+
+      #1. Command line oe arguments
+      #2. Task 
+      #3. File
+      #4. prompt
+      #5. play
