@@ -1,12 +1,12 @@
 - name: variables from files
   hosts: local
   connection: local
-  vars_files:
+  vars_files: #we pull the var file from course.yaml
   - course.yaml
   tasks:
   - name: print course informatiom
-    vars:
-      COURSE: Ansible #task level variables @inheritance
+    #vars:
+      #COURSE: Ansible #task level variables @inheritance
     ansible.builtin.debug:
     # vars reference should be surrounded by {{}}
       msg: "Hello Iam learning {{ COURSE }}, Course Duration: {{ DURATION }}, Trainer is {{ TRAINER }}"
