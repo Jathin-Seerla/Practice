@@ -1,4 +1,4 @@
-- name: COnditions demo
+- name: Conditions demo
   hosts: local
   conncetion: local
   vars:
