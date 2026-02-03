@@ -12,11 +12,11 @@
     ansible.builtin.debug:
       msg: "hello, {{ persons | split(',')}}"
   
-  - name: covert map into list
+  - name: convert map into list
     vars:
       course:
         name: ansible
         duration: 10HR
         trainer: Jathin
     ansible.builtin.debug:
-      msg: "Course Unfo: {{ course | dict2items }}"
+      msg: "Course info: {{ course | dict2items }}"
