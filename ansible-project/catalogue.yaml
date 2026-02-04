@@ -25,7 +25,7 @@
         path: /app
         state: directory
 
-    - name: download catalogut code
+    - name: download catalogue code
       ansible.builtin.get_url:
         url: https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip 
         dest: /tmp/catalogue.zip
@@ -37,3 +37,25 @@
         src: /tmp/catalogue.zip
         dest: /app
         remote_src: yes
+
+    - name: install dependencies
+      community.general.npm:
+        path: /app
+
+    - name: copy catalogue service to system directory
+      ansible.builtin.copy:
+        src: catalogue.service
+        dest: /etc/systemd/system/catalogue.service
+
+    - name: systemctl deamon reload
+      ansible.builtin.systemd_service:
+        deamon_reload: true
+
+    - name: stsrt and enable catalogue
+      ansible.builtin.service:
+        name: catalogue
+        state: started
+        enable: yes
+
+
+    
