@@ -74,7 +74,7 @@
 
     - name: load products data
       ansible.builtin.shell: >
-        mongosh --host 172.31.71.206 < /app/db/master-data.js
+        mongosh --host 172.31.22.43 < /app/db/master-data.js
 
 
 
