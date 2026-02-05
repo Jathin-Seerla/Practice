@@ -83,6 +83,7 @@
         --eval 'db.getMongo().getDBNames().indexOf("catalogue")'
       register: catalogue_output
       changed_when: false
+      failed_when: false
 
     - name: print catalogue output
       ansible.builtin.debug:
