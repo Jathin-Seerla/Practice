@@ -79,7 +79,7 @@
 
     - name: print catalogue output
       ansible.builtin.debug:
-        msg:"{{ catalogue_output}}"
+        msg:"{{ catalogue_output }}"
 
 
 
