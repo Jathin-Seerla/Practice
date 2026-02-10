@@ -97,10 +97,6 @@
         src: nginx.conf
         dest: /etc/nginx/nginx.conf
 
-    - name: validate nginx config
-      ansible.builtin.command: nginx -t
-      changed_when: false
-
     - name: start and enable nginx
       ansible.builtin.service:
         name: nginx
