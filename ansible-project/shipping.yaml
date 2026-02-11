@@ -78,8 +78,8 @@
   #tags: we use this to just run this particular part
   #- import we use -t import and run this in ansible sever
     community.mysql.mysql_db:
-      name: all
-      login_user: root
+      name: cities 
+      login_user: shipping 
       login_password: RoboShop@1
       login_host: 172.31.20.114
       state: import
