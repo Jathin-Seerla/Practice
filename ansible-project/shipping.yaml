@@ -2,10 +2,21 @@
   hosts: shipping
   become: yes
   tasks:
-  - name: install maven
+  - name: install maven and mysql
     ansible.builtin.dnf:
-      name: maven
+      name: "{{ item }}"
       state: installed
+    loop:
+    - maven
+    - mysql
+
+  - name: install PyMySQL and cryptography
+    ansible.builtin.pip:
+      name: "{{ item  }}"
+      executable: pip3.9
+    loop:
+    - PyMySQL
+    - cryptography
 
   - name: create system user 
     ansible.builtin.user:
@@ -17,7 +28,6 @@
     ansible.builtin.file:
       path: /app
       state: directory
-
   - name: download shipping code
     ansible.builtin.get_url:
       url: https://roboshop-artifacts.s3.amazonaws.com/shipping-v3.zip 
@@ -56,13 +66,10 @@
       state: started
       enabled: yes
 
-  - name: install mysql client
-    ansible.builtin.dnf:
-      name: "{{ item }}"
-      state: installed
-    loop:
-    - PyMySQL
-    - maven
+  # - name: install mysql client
+  #   ansible.builtin.dnf:
+  #     name: mysql
+  #     state: installed
 
   - name: connect to mysql using app user
     community.mysql.mysql_info:
