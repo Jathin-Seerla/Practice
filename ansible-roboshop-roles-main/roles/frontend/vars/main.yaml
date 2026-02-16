@@ -1,5 +1,5 @@
 CATALOGUE_HOST: 172.31.30.201
-USER_HOST: user.daws84s.site
-CART_HOST: cart.daws84s.site
-SHIPPING_HOST: shipping.daws84s.site
-PAYMENT_HOST: payment.daws84s.site
+USER_HOST: localhost
+CART_HOST: localhost
+SHIPPING_HOST: localhost
+PAYMENT_HOST: localhost
