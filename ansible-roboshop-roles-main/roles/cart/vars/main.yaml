@@ -1,2 +1,2 @@
-CATALOGUE_HOST: catalogue.daws84s.site
-REDIS_HOST: redis.daws84s.site
+CATALOGUE_HOST: 172.31.30.201
+REDIS_HOST: 172.31.20.207
