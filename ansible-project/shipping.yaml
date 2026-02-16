@@ -81,13 +81,13 @@
     community.mysql.mysql_db:
       name: all
       login_user: shipping 
-      login_password: RoboShop@1
+      login_password: Jathin@123
       login_host: 172.31.20.114
       state: import
       target: "{{ item }}"
     loop:
     - /app/db/schema.sql
-    #- /app/db/app-user.sql 
+    - /app/db/app-user.sql 
     - /app/db/master-data.sql 
 
   - name: restart shipping
