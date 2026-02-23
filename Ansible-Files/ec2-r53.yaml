@@ -1,0 +1,53 @@
+- name: create ec2 and r53 records
+  hosts: local
+  connection: local
+  vars:
+    instances:
+    - mysql  #mysqlll it will create one more instance cost waste poor in this type not in goos at state cant 
+    - frontend
+    - backend
+    #subnet_id: id
+  tasks:
+  - name: create ec2
+    amazon.aws.ec2_instance:
+      name: "{{ item }}"
+      vpc_subnet_id: subnet- #get this in instances we will have and give it here
+      instance_type: t3.micro
+      security_group: #sg id
+      image_id: #ami# id
+      tags: 
+        Name: "{{ item }}"
+
+    loop: "{{ instances }}" 
+    rehister: ec2_output
+
+  - name: print ec2_output
+    ansible-buildin,debug:
+     msgL "{ ec2_output }"
+
+  - name: create r53 records
+    ansible.aws.route53:
+      state: present
+      zone: #domain
+      record: "{{ item.item }}"
+      type: A
+      ttl: 1
+      value: "{{ item.instances[0].private_ip_address }}"
+      wait: true
+      overwrite: true
+    loop: "{{ ec2_output.results}}"
+
+  - name: create r53 records
+    ansible.aws.route53:
+      state: present
+      zone: #domain
+      record: "{{ zone }}"
+      type: A
+      ttl: 1
+      value: "{{ item.instances[0].public_ip_address }}"
+      wait: true
+      overwrite: true
+    loop: "{{ ec2_output.results}}"
+    when: item-item == "frontend"
+
+  
